@@ -7,7 +7,7 @@ public class Solution {
         min[l-1]=A.get(l-1);
         
         for(int i=1;i<l;i++)
-        max[i]=Math.ma2x(max[i-1],A.get(i));
+        max[i]=Math.max(max[i-1],A.get(i));
         
         for(int i=l-2;i>=0;i--)
         min[i]=Math.min(min[i+1],A.get(i));
