@@ -1,0 +1,15 @@
+public class Solution {
+    public int[] solve(int[] A) {
+        int n = A.length;
+        int [] B = new int[n];
+        int a = 0;
+        Arrays.fill(B, 1);
+        for(int i = 0; i < n; ++i){
+            if(A[i] == 0){
+                B[a] = 0;
+                ++a;
+            }
+        }
+        return B;
+    }
+}
