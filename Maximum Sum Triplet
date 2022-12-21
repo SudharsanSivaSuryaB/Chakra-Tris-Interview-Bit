@@ -1,0 +1,20 @@
+public class Solution {
+    public int solve(int[] A) {
+        int n = A.length;
+        int[] maxArray = new int[n+1];
+        maxArray[n] = 0; 
+            for (int i = n - 1; i >= 0; --i) 
+        maxArray[i] = Math.max(maxArray[i + 1], A[i]); 
+        int ans = 0; 
+        TreeSet<Integer> lowValue = new TreeSet<Integer>();
+        lowValue.add(Integer.MIN_VALUE);
+        for (int i = 0; i < n - 1; ++i) { 
+            if (maxArray[i + 1] > A[i]) { 
+                ans = Math.max(ans, lowValue.lower(A[i]) 
+                                   + A[i] + maxArray[i + 1]); 
+                lowValue.add(A[i]); 
+            } 
+        } 
+        return ans; 
+    }
+}
