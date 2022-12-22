@@ -1,0 +1,17 @@
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int maximumGap(final int[] b) {
+  
+    int len = b.length;
+    
+    Arrays.sort (b);
+    int ans = 0;
+    for (int i = 0; i < len - 1; i++)
+    {
+        ans = Math.max (ans, b[i+1] - b[i]);
+    }
+    return ans;
+    }
+}
+
+
