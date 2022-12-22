@@ -1,0 +1,31 @@
+public class Solution {
+    public int solve(int[] A, int B) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i : A)
+        {
+            if(map.containsKey(i))
+                map.compute(i, (k,v) -> v=v+1); 
+            else
+                map.put(i, 1); 
+
+            if(map.containsKey(i-B)) 
+                map.compute(i-B, (k,v) -> v=v+1);
+            else
+                map.put(i-B, 1); 
+
+            if(map.containsKey(i+B))  
+                map.compute(i+B, (k,v) -> v=v+1);
+            else 
+                map.put(i+B, 1); 
+        }
+        
+        int n = A.length;
+
+        for(int key : map.keySet())
+            if(map.get(key) == n) 
+                return 1;
+
+        return 0;
+    }
+}
