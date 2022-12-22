@@ -1,0 +1,31 @@
+public class Solution {
+    public int solve(int[] A) {
+        int evenSum = 0;
+        int oddSum = 0;
+        
+        for(int i=0; i<A.length; i++) {
+            if(i%2 == 0)
+                evenSum += A[i];
+            else
+                oddSum += A[i];
+        }
+        
+        int count = 0;
+        
+        for(int i=0;i<A.length; i++) {
+            if(i%2 == 0) {
+                evenSum -= A[i];
+                if(evenSum == oddSum)
+                    count++;
+                oddSum += A[i];
+            } else {
+                oddSum -= A[i];
+                if(evenSum == oddSum)
+                    count++;
+                evenSum += A[i];
+            }
+        }
+        return count;
+    }
+}
+
