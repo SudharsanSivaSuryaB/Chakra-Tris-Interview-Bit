@@ -1,0 +1,49 @@
+public class Solution {
+    public int[][] solve(int[] A, int B, int C) {
+        int[][] res = new int[B][C];
+        int jmax = B-1;
+        int jmin = 1;
+        int kmax = C-1;
+        int kmin = 0;
+        int step = 1;
+        if (C == 1) {
+            step = 2;
+        }
+        for (int i = 0, j = 0, k = kmin; i < A.length; i++) {
+            res[j][k] = A[i];
+            switch (step) {
+                case 1:
+                    k++;
+                    if (k == kmax) {
+                        kmax--;
+                        step = 2;
+                    }
+                    break;
+                case 2:
+                    j++;
+                    if (j == jmax) {
+                        jmax--;
+                        step = 3;
+                    }
+                    break;
+                case 3:
+                    k--;
+                    if (k == kmin) {
+                        kmin++;
+                        step = 4;
+                    }
+                    break;
+                case 4:
+                    j--;
+                    if (j == jmin) {
+                        jmin++;
+                        step = 1;
+                    }   
+                    break;
+            }
+            
+        }
+        
+        return res;
+    }
+}
