@@ -1,0 +1,26 @@
+public class Solution {
+    public int setIntersection(int[][] A) {
+        int n = A.length;
+        Arrays.sort(A, (a, b) -> a[1] == b[1] ? a[0] - b[0] : a[1] - b[1]);
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(A[0][1] - 1);
+        res.add(A[0][1]); 
+        for (int i = 1; i < n; i++) {
+            int start = A[i][0];
+            int end = A[i][1];
+            int size = res.size();
+            int last = res.get(size - 1);
+            int secondLast = res.get(size - 2);
+            if (start > last) {
+                res.add(end - 1);
+                res.add(end);
+            } else if (start == last) {
+                res.add(end);
+            }
+            else if (start > secondLast) {
+                res.add(end);
+            }
+        }
+        return res.size();
+    }
+}
