@@ -1,0 +1,18 @@
+public class Solution {
+	public int repeatedNumber(final List<Integer> A) {
+	    int num;
+	    int n = A.size();
+	    Collections.sort(A);
+	    for (int i = 0; i < n;) {
+	        int rep = 0;
+	        num = A.get(i);
+	        while (i < n && A.get(i) == num) {
+	            rep++;
+	            i++;
+	        }
+	        if (rep*3 > n)
+	            return num;
+	    }
+            return -1;
+	}
+}
